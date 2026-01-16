@@ -10,6 +10,8 @@ DataStream SDK自体はどのソフトウェアでも利用できるため、同
 また、後述しますがSegmentデータを取得するので、剛体のみではなくActorのストリーミングにも応用可能と考えられます。
 どちらも動作を保証するものではありません。
 
+**適宜バグの修正を行っているため、[Releases](https://github.com/TakayoshiHagiwara/vicon-data-stream-touchdesigner/releases)から最新版をご利用ください。**
+
 # Table Of Contents <!-- omit in toc -->
 <details>
 <summary>Details</summary>
@@ -84,7 +86,7 @@ o_pos = client.GetSegmentGlobalTranslation(rigidbody_name, segment_name)
 pos = o_pos[0]
 
 pos_rhand_zup = [pos[0], pos[1], pos[2]]    # Vicon coordinate
-pos_lhand_yup = [pos[1], pos[2], pos[0]]    # Left-handed, y-up
+pos_lhand_yup = [-pos[1], pos[2], pos[0]]    # Left-handed, y-up
 
 # Rotation
 o_rot = client.GetSegmentGlobalRotationQuaternion(rigidbody_name, segment_name)
@@ -116,6 +118,8 @@ rot_lhand_yup = [rot[1], -rot[2], -rot[0], rot[3]]  # Left-handed, y-up
 
 # Versions
 - 1.0.0: 2025/8/4
+- 1.0.1: 2026/1/16
+  - 左手y-up座標系におけるxの符号を修正
 
 
 # Author
